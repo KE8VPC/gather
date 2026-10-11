@@ -1,0 +1,8 @@
+# Subdirectory entry point: upload this whole directory as /gather/.
+Options -Indexes
+DirectoryIndex index.php
+Require all granted
+# Private directories each also contain a mandatory deny-all .htaccess.
+<FilesMatch "(?i)(^\.|\.(md|sql|json|ini|log|bak|old|zip|tar|gz|sha256|mjs|py)$)">
+    Require all denied
+</FilesMatch>

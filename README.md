@@ -1,3 +1,7 @@
+# PHP/MySQL version
+
+The standalone conversion is in **[php/](php/README.md)**. Start with **[php/INSTALL.md](php/INSTALL.md)**. It includes native PHP accounts, MySQL persistence and plain JavaScript/CSS; no Node.js server is required. The original TypeScript implementation below remains available separately.
+
 # Gather — Content Curator
 
 A multi-user video and podcast library built with TypeScript, React, Vinext, Cloudflare Workers and D1.
@@ -18,7 +22,7 @@ Copy `.env.example` to `.env` for local configuration. Configure hosted values a
 - `TWITCH_CLIENT_ID` and `TWITCH_CLIENT_SECRET`: an owner-registered Twitch application. Used server-side to obtain a client-credentials token and call Get Streams. The app does not need users' Twitch passwords or tokens.
 - `YOUTUBE_API_KEY`: enables live checks using videos.list for videos present in each imported channel's recent RSS feed. RSS content retrieval itself does not require this key.
 
-Direct OAuth account subscription sync is not implemented. YouTube users import Google Takeout subscriptions.csv; Twitch users import channel URL lists or JSON; podcasts use public feeds/OPML. Spotify/Apple proprietary library imports and paywalled content are not connected. Public podcast hosting domains are explicitly allowed; unknown hosts/redirect targets require a code change. Embedded playback remains subject to provider restrictions. YouTube live detection is limited to the recent RSS feed, not an exhaustive live search.
+Direct OAuth account subscription sync is not implemented in this TypeScript version. The separate PHP/MySQL version now supports YouTube and Twitch linking; see php/CONNECTIONS.md. YouTube users import Google Takeout subscriptions.csv; Twitch users import channel URL lists or JSON; podcasts use public feeds/OPML. Spotify/Apple proprietary library imports and paywalled content are not connected. Public podcast hosting domains are explicitly allowed; unknown hosts/redirect targets require a code change. Embedded playback remains subject to provider restrictions. YouTube live detection is limited to the recent RSS feed, not an exhaustive live search.
 
 References: https://developers.google.com/youtube/v3/docs/subscriptions/list and https://dev.twitch.tv/docs/api/reference/#get-streams.
 

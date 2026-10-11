@@ -1,0 +1,10 @@
+/config/local.php
+/config/install-progress.php
+/config/install-probe.php
+/config/.install-*
+/config/admin-settings.json
+/config/admin-settings.lock
+/config/.admin-*
+/storage/*
+!/storage/.htaccess
+!/storage/.gitkeep

@@ -1,0 +1,2 @@
+# Private application directory. Apache 2.4+ must honor this file.
+Require all denied

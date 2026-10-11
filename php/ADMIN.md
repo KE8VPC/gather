@@ -5,7 +5,7 @@ For current Google/Twitch console instructions and error fixes, see [OAUTH-SETUP
 
 1. Back up your existing Gather folder and database in your hosting panel.
 2. Extract `gather-php-mysql-1.4.0-update.zip`. Upload the contents of its `gather` folder **into your existing `/gather/` folder**, replacing matching application files. Merge folders; do not delete or replace the entire existing folder. This update excludes `config/`, `storage/`, `database/` and `install/`.
-3. Sign in and select **Administration**, or open **https://auglaize.co/gather/public/admin.php**.
+3. Sign in and select **Administration**, or open `/gather/public/admin.php` on your own site.
 4. Activate administration once using your hosting database password (the one used in installation) and your current Gather password. The signed-in account becomes the site's administrator. No SQL changes or configuration edits are needed.
 5. Enter your Google/YouTube and Twitch application credentials, confirm your Gather password, and save.
 

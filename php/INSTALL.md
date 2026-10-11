@@ -6,7 +6,7 @@ Already installed version 1.3.0? Use the **1.4.0 update ZIP** and [ADMIN.md](ADM
 
 1. In your hosting panel, create an **empty MySQL database** and a database user with access to it. Keep its hostname, database name, username and password handy.
 2. Upload the package's complete `gather` folder, including hidden `.htaccess` files, into your existing website's web directory.
-3. Open **https://auglaize.co/gather/install/** (or your own HTTPS address ending in `/install/`). Enter the database details, choose your first Gather sign-in, and click **Install Gather**.
+3. Open your installation's HTTPS address ending in `/install/` (for example, `https://example.com/gather/install/`; replace `example.com` with your own domain). Enter the database details, choose your first Gather sign-in, and click **Install Gather**.
 4. When setup finishes, delete **`gather/install/`** using your hosting file manager or FTP app. Then sign in to Gather.
 
 The installer checks PHP and folder permissions, verifies private folders are inaccessible from the web, creates the tables, generates the encryption key and saves `config/local.php`. It detects the website address and subdirectory automatically. No SQL import, configuration editing or command line is needed for a normal fresh installation. YouTube/Twitch credentials and the operator/contact details can be added later; blank legal details retain their visible reminders.

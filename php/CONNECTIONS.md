@@ -14,7 +14,7 @@ Gather 1.2 adds **Linked accounts** to the sidebar and import dialog. Users sign
 
 Fresh installations should use `database/schema.sql`, which includes these tables.
 
-For this project’s planned host, see [HOSTING-AUGLAIZE.md](HOSTING-AUGLAIZE.md). Run `php bin/check-connections.php` after configuring credentials to identify missing setup without exposing secrets.
+For deployment configuration, use [HOSTING-SETUP.md](HOSTING-SETUP.md) as a template. Run `php bin/check-connections.php` after configuring credentials to identify missing setup without exposing secrets.
 
 ## Shared setup
 

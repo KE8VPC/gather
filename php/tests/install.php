@@ -18,9 +18,9 @@ function fixture(string $suffix,string $case):array {
 }
 $data=['db_host'=>'127.0.0.1','db_port'=>'33080','db_user'=>'root','db_password'=>'','name'=>"O'Reilly",'email'=>'owner@example.test','password'=>'test-unique-password-2026','password_confirm'=>'test-unique-password-2026','registration'=>'closed','legal_operator'=>"O'Reilly's \n Test",'legal_contact_email'=>''];
 try {
-    $location=Installer::location(['HTTP_HOST'=>'auglaize.co','HTTPS'=>'on','SCRIPT_NAME'=>'/gather/install/index.php']);
-    verify($location['url']==='https://auglaize.co/gather','subdirectory URL detection');
-    fails(fn()=>Installer::location(['HTTP_HOST'=>'auglaize.co','SCRIPT_NAME'=>'/gather/install/index.php']),'public HTTP refused');
+    $location=Installer::location(['HTTP_HOST'=>'example.com','HTTPS'=>'on','SCRIPT_NAME'=>'/gather/install/index.php']);
+    verify($location['url']==='https://example.com/gather','subdirectory URL detection');
+    fails(fn()=>Installer::location(['HTTP_HOST'=>'example.com','SCRIPT_NAME'=>'/gather/install/index.php']),'public HTTP refused');
     fails(fn()=>Installer::location(['HTTP_HOST'=>"evil\r\nInjected: yes",'HTTPS'=>'on','SCRIPT_NAME'=>'/gather/install/index.php']),'invalid Host refused');
     [$root,$db]=fixture($suffix,'fresh');$data['db_name']=$db;
     fails(fn()=>(new Installer($root))->verifyProtection('https://127.0.0.1'),'public protection probe cannot target internal addresses');

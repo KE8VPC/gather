@@ -47,7 +47,7 @@ try {
     $cipher=$service->seal('private-token','user:a');check(!str_contains($cipher,'private-token') && $service->unseal($cipher,'user:a')==='private-token','tokens encrypted at rest');
     rejects(fn()=>$service->unseal($cipher,'user:b'),'tokens cannot be swapped between users');
     $badSettings=$settings;$badSettings['oauth_callback_url']='https://evil.example/oauth.php';check(!(new Connections($badSettings))->ready('youtube'),'external callback host rejected');
-    $production=$settings;$production['app_url']='https://auglaize.co/gather';$production['oauth_callback_url']='https://auglaize.co/gather/public/oauth.php';$production['secure_cookies']=true;
+    $production=$settings;$production['app_url']='https://example.com/gather';$production['oauth_callback_url']='https://example.com/gather/public/oauth.php';$production['secure_cookies']=true;
     check((new Connections($production))->ready('youtube'),'HTTPS subdirectory setup accepted with secure cookies');
     $production['secure_cookies']=false;check(!(new Connections($production))->ready('youtube'),'HTTPS account linking requires secure cookies');
     $mismatch=$settings;$mismatch['oauth_callback_url']='https://127.0.0.1:8088/nested/gather/public/oauth.php';$mismatch['secure_cookies']=true;

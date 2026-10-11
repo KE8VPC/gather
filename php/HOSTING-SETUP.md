@@ -1,20 +1,19 @@
-# Gather setup for auglaize.co
+# Gather hosting setup reference
 
-Deployment address supplied by the owner: **https://auglaize.co/gather/**.
-The owner reported successful installation. Current provider-console configuration and live OAuth acceptance are not independently verified. For the researched, current walkthrough and troubleshooting, use [OAUTH-SETUP.md](OAUTH-SETUP.md). It includes the reported Google `redirect_uri_mismatch` fix.
+This guide uses `example.com` as a placeholder. Replace it and `/gather` with the actual domain and installation path before entering values in hosting or provider consoles. Installation success and provider-console configuration must be verified on the target site. For the current walkthrough and troubleshooting, use [OAUTH-SETUP.md](OAUTH-SETUP.md).
 
 ## Upload and database
 
-Upload the package's complete `gather` folder to the web directory serving `auglaize.co`. Include hidden `.htaccess` files. Create an empty database and its user in your hosting panel, then open **https://auglaize.co/gather/install/**. The browser installer checks folder protection, creates the tables, saves configuration and creates your first sign-in. Delete **`gather/install/`** when it finishes. See [INSTALL.md](INSTALL.md) for requirements and troubleshooting.
+Upload the package's complete `gather` folder to the web directory serving `example.com`. Include hidden `.htaccess` files. Create an empty database and its user in your hosting panel, then open **https://example.com/gather/install/**. The browser installer checks folder protection, creates the tables, saves configuration and creates your first sign-in. Delete **`gather/install/`** when it finishes. See [INSTALL.md](INSTALL.md) for requirements and troubleshooting.
 
 For an existing Gather database, preserve `config/local.php` and `storage/installed.lock`. Back up first and apply `php bin/upgrade.php` or `database/upgrade-1.2.sql` only if the 1.2 migration has not been applied; do not reimport the full schema or rerun the fresh installer. Version 1.3.0 adds no new schema migration.
 
 The installer sets these values automatically in the private **hosted** `config/local.php` (manual installations should use the same values):
 
 ```php
-'app_url' => 'https://auglaize.co/gather',
+'app_url' => 'https://example.com/gather',
 'secure_cookies' => true,
-'oauth_callback_url' => 'https://auglaize.co/gather/public/oauth.php',
+'oauth_callback_url' => 'https://example.com/gather/public/oauth.php',
 ```
 
 Keep the local development configuration pointed at localhost. Configure the database with your hosting provider's actual database hostname, database name and credentials.
@@ -26,12 +25,12 @@ After registering each application, enter its client ID and secret in **Administ
 | Field | Value |
 | --- | --- |
 | App name | Gather (choose a unique name if Twitch requires it) |
-| Homepage | `https://auglaize.co/gather/` |
-| Privacy policy | `https://auglaize.co/gather/public/legal.php?page=privacy` |
-| Terms of use | `https://auglaize.co/gather/public/legal.php?page=terms` |
-| Google authorized domain | `auglaize.co` |
-| Google authorized redirect URI | `https://auglaize.co/gather/public/oauth.php?provider=youtube` |
-| Twitch OAuth redirect URL | `https://auglaize.co/gather/public/oauth.php?provider=twitch` |
+| Homepage | `https://example.com/gather/` |
+| Privacy policy | `https://example.com/gather/public/legal.php?page=privacy` |
+| Terms of use | `https://example.com/gather/public/legal.php?page=terms` |
+| Google authorized domain | `example.com` |
+| Google authorized redirect URI | `https://example.com/gather/public/oauth.php?provider=youtube` |
+| Twitch OAuth redirect URL | `https://example.com/gather/public/oauth.php?provider=twitch` |
 
 Copy each callback exactly, including its query string. The `oauth_callback_url` configuration value above intentionally omits the query string; Gather adds the provider when it constructs the redirect.
 
@@ -72,7 +71,7 @@ From the uploaded `gather` directory, run:
 ```sh
 php bin/preflight.php
 php bin/check-connections.php
-php bin/check-web-access.php https://auglaize.co/gather
+php bin/check-web-access.php https://example.com/gather
 ```
 
 `check-connections.php` reports missing fields without printing credentials or tokens. A configuration pass is not proof that the provider accepts the app or callbacks. Test actual consent, denial, first import, repeat sync, token refresh, disconnect and two separate Gather accounts in a regular browser. Follow the detailed acceptance list in [CONNECTIONS.md](CONNECTIONS.md).

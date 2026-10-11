@@ -4,7 +4,7 @@
 
 A standalone PHP conversion of the Gather content subscription hub. The server runs PHP; accounts and content are stored in MySQL. The browser uses plain JavaScript and CSS. No Node.js, React, Composer, build step, Cloudflare, or ChatGPT account is required on the host.
 
-For the planned auglaize.co installation, use [HOSTING-AUGLAIZE.md](HOSTING-AUGLAIZE.md) for exact provider form values and launch steps.
+Use [HOSTING-SETUP.md](HOSTING-SETUP.md) as a deployment template; replace its `example.com` placeholders with your own domain and installation path.
 
 See [ROADMAP.md](ROADMAP.md) for completed work, the next YouTube/Twitch launch checks, proposed improvements and deferred integrations.
 

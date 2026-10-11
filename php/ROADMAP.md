@@ -2,7 +2,7 @@
 
 Updated September 16, 2026. This roadmap covers the PHP/MySQL application and its subdirectory installation. The older TypeScript Sites application is separate.
 
-**Planned host:** `https://auglaize.co/gather/`. The owner confirmed Google and Twitch apps are not registered yet. Exact setup values are prepared in [HOSTING-AUGLAIZE.md](HOSTING-AUGLAIZE.md).
+**Deployment:** No production hostname is embedded in this roadmap. Use [HOSTING-SETUP.md](HOSTING-SETUP.md) as a template and substitute the actual installation address when configuring provider applications.
 
 **Current priority:** finish live YouTube/Twitch setup and validate the hosted experience before adding more platforms. Future items below are planning proposals, not authorization to implement or deploy them. No delivery dates are committed.
 
@@ -92,7 +92,7 @@ The user explicitly deferred Rumble and other platform work until later.
 
 - [x] Browser checks for the linked-account preview on desktop and a phone-sized viewport, mobile navigation, import dialog Escape/focus return, privacy-page navigation and horizontal overflow. No console errors were observed on the checked pages.
 - [x] Enforce matching callback/application schemes and secure cookies for HTTPS account linking; regression checks added.
-- [x] Add a secret-free setup diagnostic and exact auglaize.co deployment/provider instructions.
+- [x] Add a secret-free setup diagnostic and deployment/provider setup template.
 - [ ] Register provider applications, upload/verify the hosted installation, and complete live acceptance. A read-only request to the intended hosted welcome page timed out; no hosted pass is claimed.
 
 ## September 13, 2026 — Administration delivered (1.4.0)

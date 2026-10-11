@@ -1,12 +1,14 @@
 # Gather: YouTube and Twitch setup, step by step
 
-Checked against official documentation on September 14, 2026. Tailored to Gather 1.4.0 at https://auglaize.co/gather/. Provider-console labels can vary by account. These instructions were checked against Gather's source code; they are not confirmation of your current provider-console settings or successful live authorization.
+Checked against official documentation on September 14, 2026. Tailored to Gather 1.4.0 at https://example.com/gather/. Provider-console labels can vary by account. These instructions were checked against Gather's source code; they are not confirmation of your current provider-console settings or successful live authorization.
+
+All `example.com` URLs below are placeholders. Replace the domain and `/gather` path with the exact public address of your own installation before configuring Google or Twitch.
 
 ## 1. Start here
 
-**Your reported Google error: `400 redirect_uri_mismatch`.** Go directly to Google Auth Platform → Clients, select the web application whose client ID is saved in Gather, and edit **Authorized redirect URIs**. Add `https://auglaize.co/gather/public/oauth.php?provider=youtube`, save, and start a fresh connection from Gather's Linked accounts page. This value belongs in redirect URIs, not JavaScript origins. If it still fails, expand Google's error details and compare the `redirect_uri` value it received with this entry. Share only that callback value if you need help; do not share the complete authorization URL or any codes/secrets. Section 4D explains the web client setup.
+**Your reported Google error: `400 redirect_uri_mismatch`.** Go directly to Google Auth Platform → Clients, select the web application whose client ID is saved in Gather, and edit **Authorized redirect URIs**. Add `https://example.com/gather/public/oauth.php?provider=youtube`, save, and start a fresh connection from Gather's Linked accounts page. This value belongs in redirect URIs, not JavaScript origins. If it still fails, expand Google's error details and compare the `redirect_uri` value it received with this entry. Share only that callback value if you need help; do not share the complete authorization URL or any codes/secrets. Section 4D explains the web client setup.
 
-Use a regular Chrome, Edge, Firefox or Safari window. Sign in to Gather with your existing Gather account. Open **Administration** at https://auglaize.co/gather/public/admin.php. If administration has not been activated, it will ask once for the database password used during installation and your Gather password.
+Use a regular Chrome, Edge, Firefox or Safari window. Sign in to Gather with your existing Gather account. Open **Administration** at https://example.com/gather/public/admin.php. If administration has not been activated, it will ask once for the database password used during installation and your Gather password.
 
 Keep two tabs open: Gather Administration and the provider console. You will copy credentials from the console into Gather. Do not paste secrets into chat or upload downloaded credential JSON files to your public website.
 
@@ -24,12 +26,12 @@ These are application credentials shared by the site. Every user still grants ac
 
 | Console field | Value |
 |---|---|
-| App homepage | `https://auglaize.co/gather/` |
-| Privacy policy | `https://auglaize.co/gather/public/legal.php?page=privacy` |
-| Terms of use | `https://auglaize.co/gather/public/legal.php?page=terms` |
-| Google authorized domain | `auglaize.co` |
-| Google authorized redirect URI | `https://auglaize.co/gather/public/oauth.php?provider=youtube` |
-| Twitch OAuth redirect URL | `https://auglaize.co/gather/public/oauth.php?provider=twitch` |
+| App homepage | `https://example.com/gather/` |
+| Privacy policy | `https://example.com/gather/public/legal.php?page=privacy` |
+| Terms of use | `https://example.com/gather/public/legal.php?page=terms` |
+| Google authorized domain | `example.com` |
+| Google authorized redirect URI | `https://example.com/gather/public/oauth.php?provider=youtube` |
+| Twitch OAuth redirect URL | `https://example.com/gather/public/oauth.php?provider=twitch` |
 
 Compare these with the callback fields displayed in Gather Administration. If Gather displays localhost, a different domain, or a different directory, stop and correct the installation address before configuring the providers. Do not add `www`, remove `/public/`, omit the provider query, or add a trailing slash after `oauth.php`.
 
@@ -42,7 +44,7 @@ The callback is a return address for authorization. Start connections from **Lin
 1. Open [Twitch Developer Console](https://dev.twitch.tv/console/apps) and sign in with the Twitch account that will own the application.
 2. Verify that account's email and enable two-factor authentication. Refresh the developer console afterward.
 3. Choose **Applications → Register Your Application**.
-4. Enter a unique name, for example `Auglaize Gather` if available.
+4. Enter a unique name, for example `Gather website` if available.
 5. Paste the exact Twitch callback from section 2 into **OAuth Redirect URLs**. Click **Add** so it becomes a saved entry.
 6. Choose the category that best describes your website. Complete the CAPTCHA and create the application.
 7. Open **Manage** for that application. Copy its **Client ID**.
@@ -83,16 +85,16 @@ Older tutorials may call this simply “OAuth consent screen.” Google's curren
 
 ### C. Enter branding links and your domain
 
-In **Branding**, register `auglaize.co` as an authorized domain and use the homepage/privacy/terms addresses in section 2. The authorized-domain field takes a domain, not an HTTPS URL or `/gather` path. Use real contact information before public verification; your current legal-page placeholders need to be filled before that stage.
+In **Branding**, register `example.com` as an authorized domain and use the homepage/privacy/terms addresses in section 2. The authorized-domain field takes a domain, not an HTTPS URL or `/gather` path. Use real contact information before public verification; your current legal-page placeholders need to be filled before that stage.
 
-If Google requires domain ownership verification, use [Google Search Console](https://search.google.com/search-console/) for `auglaize.co` and follow its ownership instructions. Registering a Cloud project alone does not establish domain ownership. [Google branding and authorized-domain requirements](https://support.google.com/cloud/answer/15549049?hl=en).
+If Google requires domain ownership verification, use [Google Search Console](https://search.google.com/search-console/) for `example.com` and follow its ownership instructions. Registering a Cloud project alone does not establish domain ownership. [Google branding and authorized-domain requirements](https://support.google.com/cloud/answer/15549049?hl=en).
 
 ### D. Create the correct OAuth client
 
 1. Open **Google Auth Platform → Clients → Create client**.
 2. Choose **Web application** and name it, for example `Gather website`.
 3. Under **Authorized redirect URIs**, add the exact Google callback in section 2.
-4. Gather's current server-side flow does not require an Authorized JavaScript origin. Leave that section empty. If you use it for some separate browser feature, an origin is only `https://auglaize.co`, without `/gather/`.
+4. Gather's current server-side flow does not require an Authorized JavaScript origin. Leave that section empty. If you use it for some separate browser feature, an origin is only `https://example.com`, without `/gather/`.
 5. Create the client. It must be a web client, not a desktop client or service account.
 
 The callback must match what Gather sends. This is why entering the homepage in the redirect field produces a mismatch. [Google web-server OAuth instructions](https://developers.google.com/identity/protocols/oauth2/web-server).
